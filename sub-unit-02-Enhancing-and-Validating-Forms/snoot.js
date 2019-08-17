@@ -95,7 +95,32 @@ function copyBillingAddress(){
     }
 }
 
+function validateAddress(fieldsetId){
+    var inputElements = document.querySelectorAll("#" + fieldsetId + "input");
+    var errorDiv = document.querySelectorAll("#" + fieldsetId + ".errorMessage")[0];
+    var fieldsetValidity = true;
+    var elementCount = inputElements.length;
+    var currentElement;
 
+    try{
+        alert("I am executing the try clause");
+        for (var i = 0; i < elementCount; i++){
+            currentElement = inputElements[i];
+            if (currentElement.value === ""){
+                debugger;
+                currentElement.style.background = "rgb(255,233,233)";
+                fieldsetValidity = false;
+            } else {
+                currentElement.style.background = "white";
+            }
+        }
+    } catch (msg){
+        errorDiv.style.display = "block";
+        errorDiv.innerHTML = msg;
+        formValidity = false;
+    }
+
+}
 
 function validateForm(evt){
     if (evt.preventDefault){
@@ -104,6 +129,8 @@ function validateForm(evt){
         evt.returnValue = false;
     }
     formValidity = true;
+    validateAddress("billingAddress");
+    validateAddress("deliveryAddress");
 
     if(formValidity === true){
         document.getElementById("errorText").innerHTML = "";
