@@ -2,8 +2,8 @@
 
  *    Photo gallery
  *    Variables and functions
- *    Author: 
- *    Date:   
+ *    Author: Maria De Jesus Rizo
+ *    Date:   8.20.19
 
  *    Filename: photos.js
  */
@@ -40,6 +40,14 @@ function leftArrow() {
 /* open center figure in separate window */
 function zoomFig() {
    
+}
+
+function createEventListeners(){
+   if(leftArrow.addEventListener){
+      leftArrow.addEventListener("click", leftArrow, false);
+   } else if(leftArrow.attachEvent){
+      leftArrow.attachEvent("onclick", leftArrow);
+   }
 }
 
 /* create event listeners and populate image elements */
